@@ -1,0 +1,58 @@
+.outercont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 95vh;
+    justify-content: center;
+}
+.imagediv{
+    width: 100px;
+    padding: 50px;
+    background-color: #EFEFEF;
+    border-radius: 100px;
+}
+.description{
+    font-size: 20px;
+    margin-top: 3vh;
+    font-family: sans-serif;
+    text-align: center;
+}
+.inputdiv{
+    margin-top: 5vh;
+    
+}
+.input{
+    width: 95%;
+    font-size: 25px;
+    padding: 5px 0 5px 25px;
+    border-radius: 5px;
+    border-color: grey;
+}
+.password{
+    float: right;
+    margin-top: 1vh;
+    font-weight: bold;
+    color: #003fb9;
+    font-size: 20px;
+    cursor: pointer;
+}
+.button{
+    width: 100%;
+    margin-top: 1.5vh;
+    background-color: #003fb9;
+    color: #EFEFEF;
+    font-size: 24px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.innercontainer{
+    width: 500px;
+    color: #0b3558;
+}
+.welcome{
+    font-size: 65px;
+    font-weight: bold;
+    text-align: center;
+}
