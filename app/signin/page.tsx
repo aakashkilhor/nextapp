@@ -4,6 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import style from "./style.module.css";
+import axios from "axios";
+import { useRouter } from 'next/navigation'
 
 const Signin: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -11,6 +13,8 @@ const Signin: React.FC = () => {
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  const router = useRouter()
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -26,41 +30,42 @@ const Signin: React.FC = () => {
     event.preventDefault();
 
     // Validate email
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      setEmailError(true);
-    } else {
-      setEmailError(false);
-    }
+    // if (!/\S+@\S+\.\S+/.test(email)) {
+    //   setEmailError(true);
+    // } else {
+    //   setEmailError(false);
+    // }
 
     // Validate password
-    if (password.length < 8) {
-      setPasswordError(true);
-    } else {
-      setPasswordError(false);
-    }
+    // if (password.length < 8) {
+    //   setPasswordError(true);
+    // } else {
+    //   setPasswordError(false);
+    // }
+
     // Send login data to server
-    // axios
-    //   .post("http://localhost:3000/login", {
-    //     email: email,
-    //     password: password,
-    //   },{
-    //     withCredentials:true,
-    //   })
+    axios.post("http://localhost:4000/login", {
+        email: email,
+        password: password,
+      },{
+        withCredentials:true,
+      })
 
-    //   .then((response) => {
-    //    if (response.data.success === true) {
-    //     navigate("/");
-    //    }
+      .then((response) => {
+        console.log(response)
+       if (response.data.success === true) {
+        router.push('/dashboard')
+       }
 
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
+  // const handleClickShowPassword = () => {
+  //   setShowPassword(!showPassword);
+  // };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -70,8 +75,8 @@ const Signin: React.FC = () => {
           <Image
             src="/assets/myMage.png"
             alt="image"
-            width={100}
-            height={100}
+            width={80}
+            height={80}
             className={style.person}
           />
         </div>
@@ -83,10 +88,9 @@ const Signin: React.FC = () => {
             Please enter your email to continue.
           </div>
           <div className={style.inputdiv}>
+            Email
             <input
               placeholder="Email Address"
-              // label="Email"
-              // variant="outlined"
               value={email}
               onChange={handleEmailChange}
               // error={emailError}
@@ -95,30 +99,14 @@ const Signin: React.FC = () => {
             />
           </div>
           <div className={style.inputdiv}>
+            Password
             <input
-              // fullWidth
-              // label="Password"
               type={showPassword ? "text" : "password"}
-              // variant="outlined"
               placeholder="Password"
               value={password}
               onChange={handlePasswordChange}
               // error={passwordError}
-              // helperText={
-              // passwordError ? "Password must be 8 characters long" : ""
-              // }
-              // InputProps={{
-              //   endAdornment: (
-              //     <InputAdornment position="end">
-              //       <IconButton
-              //         aria-label="toggle password visibility"
-              //         onClick={handleClickShowPassword}
-              //       >
-              //         {showPassword ? <Switch /> : <Switch />}
-              //       </IconButton>
-              //     </InputAdornment>
-              //   ),
-              // }}
+              // helperText={passwordError ? "Password must be 8 characters long" : ""}
               className={style.input}
             />
           </div>
