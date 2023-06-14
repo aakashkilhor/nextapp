@@ -3,14 +3,13 @@
     flex-direction: column;
     align-items: center;
     height: 95vh;
-    /* justify-content: center; */
-    margin-top: 10px;
+    justify-content: center;
 }
 .imagediv{
-    width: 80px;
-    padding: 40px;
+    width: 100px;
+    padding: 50px;
     background-color: #EFEFEF;
-    border-radius: 120px;
+    border-radius: 100px;
 }
 .description{
     font-size: 20px;
@@ -53,7 +52,7 @@
     color: #0b3558;
 }
 .welcome{
-    font-size: 55px;
+    font-size: 65px;
     font-weight: bold;
     text-align: center;
 }

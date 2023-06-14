@@ -7,7 +7,6 @@ export default function RootLayout({
   }) {
     return (
         <>
-        test
         <main className= {style.main}>
             {children}
         </main>
